@@ -1,12 +1,9 @@
 import React from "react";
 import {Page} from "../site-components/views/Page";
-import {Footer} from "../site-components/views/Footer";
+import {Header} from "../site-components/views/Header";
 
 export const HomePage = () => (
     <Page id="home-page">
-        <div className="hero thickened primary">
-            Test
-        </div>
-        <Footer className="hero primary"/>
+        <Header/>
     </Page>
 );

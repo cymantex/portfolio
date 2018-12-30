@@ -1,0 +1,9 @@
+/*----------------------------------------
+ * Dividers
+ *----------------------------------------*/
+@for $i from 1 through length($marginList) {
+    .divider-#{$i}{
+        margin-top: #{nth($marginList, $i)};
+        margin-bottom: #{nth($marginList, $i)};
+    }
+}

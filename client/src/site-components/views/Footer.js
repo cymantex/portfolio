@@ -1,11 +1,10 @@
 import React from "react";
-import {SocialMenu} from "./SocialMenu";
 import {Copyright} from "./Copyright";
+import classnames from "classnames";
 
-export const Footer = ({children, ...props}) => (
-    <footer {...props}>
+export const Footer = ({className = "", children, ...props}) => (
+    <footer id="footer" className={classnames("hero secondary", className)} {...props}>
         {children}
-        <SocialMenu/>
         <Copyright/>
     </footer>
 );

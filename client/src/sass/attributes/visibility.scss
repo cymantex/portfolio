@@ -1,0 +1,50 @@
+/*----------------------------------------
+ * Visibility
+ *----------------------------------------*/
+@mixin hide(){
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+
+@mixin show(){
+    position: initial;
+    left: inherit;
+    visibility: inherit;
+}
+
+.hide {
+    @include hide();
+}
+
+.flex {
+    display: flex;
+}
+
+.show {
+    @include show();
+}
+
+.inline {
+    display: inline-block;
+}
+
+@each $name, $size in $mediaQueries {
+    .show-#{$name}{
+        @include hide();
+    }
+
+    @media (max-width: $size) {
+        .hide-#{$name}:not(.show){
+            @include hide();
+        }
+
+        .show-#{$name}{
+            @include show();
+        }
+
+        .block-#{$name}{
+            display: block;
+        }
+    }
+}
