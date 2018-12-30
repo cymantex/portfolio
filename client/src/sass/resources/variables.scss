@@ -1,11 +1,12 @@
 //----------------------------------------------
 // Colors
 //----------------------------------------------
-$primary   : #d59541;
-$secondary : #545b62;
+$primary   : #16ADE3;
+$secondary : #1D1D1F;
 $white     : #ffffff;
 $black     : #000000;
 $gray      : #f3f5f7;
+$red: #D24A3D;
 
 //----------------------------------------------
 // Bootstrap Colors
@@ -65,7 +66,7 @@ $colors: join($darkColors, $lightColors);
 //----------------------------------------------
 // Fonts
 //----------------------------------------------
-$primaryFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+$primaryFont: "Heebo", "Helvetica Neue", Arial, Helvetica, sans-serif;
 $fontAwesome: "Font Awesome 5 Free";
 
 //----------------------------------------------

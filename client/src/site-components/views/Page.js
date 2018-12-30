@@ -1,6 +1,6 @@
 import React from "react";
 
-export const PageView = ({children, ...props}) => (
+export const Page = ({children, ...props}) => (
     <main {...props}>
         {children}
     </main>
