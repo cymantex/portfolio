@@ -1,0 +1,25 @@
+/*----------------------------------------
+ * Intro Section
+ *----------------------------------------*/
+#intro {
+    h1 {
+        font-size: 64px;
+    }
+
+    p {
+        font-size: $display6;
+        font-weight: lighter;
+    }
+}
+
+@media (max-width: $mediaSmall) {
+    #intro {
+        h1 {
+            font-size: $display3;
+        }
+
+        p {
+            font-size: $h3;
+        }
+    }
+}

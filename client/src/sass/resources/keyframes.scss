@@ -8,3 +8,13 @@
     50% { transform: scale(1.5); }
     100% { transform: scale(1); }
 }
+
+@keyframes fadeBackground {
+    from {
+        background-color: rgba($secondary, .85);
+    }
+
+    to {
+        background-color: rgba($secondary, .5);
+    }
+}

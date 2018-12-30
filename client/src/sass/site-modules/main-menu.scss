@@ -1,0 +1,43 @@
+/*----------------------------------------
+ * Main Menu
+ *----------------------------------------*/
+#main-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    user-select: none;
+
+    a,
+    .menu-item {
+        &:hover,
+        &.active {
+            color: $primary!important;
+            background-color: inherit;
+        }
+    }
+}
+
+@media (max-width: $mediaSmall) {
+    #main-menu {
+        .menu:last-child {
+            align-items: flex-start;
+            transition: .4s transform ease-out;
+            transform: translateX(-100%);
+            will-change: transform;
+        }
+
+        &.mobile-menu-open {
+            background-color: #2C344A;
+
+            .menu:last-child {
+                transform: translateX(0);
+            }
+        }
+
+        .menu:first-child {
+            flex: 1;
+        }
+    }
+}
