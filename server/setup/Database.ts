@@ -8,7 +8,7 @@ export default class Database {
 
     constructor(options: SequelizeConfig){
         this.options = options;
-        this.sequelize = new Sequelize(options);
+        this.sequelize = new Sequelize((this.options.url) ? this.options.url : this.options);
     }
 
     async drop(): Promise<void> {
