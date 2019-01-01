@@ -3,7 +3,7 @@ import {Sequelize} from "sequelize-typescript";
 import {SequelizeConfig} from "sequelize-typescript/lib/types/SequelizeConfig";
 
 export default class Database {
-    options: SequelizeConfig;
+    options: any;
     sequelize: Sequelize;
 
     constructor(options: SequelizeConfig){
@@ -21,6 +21,7 @@ export default class Database {
      * @returns boolean true if the database was created, false otherwise.
      */
     async createIfNotExists(): Promise<boolean> {
+        if(this.options.url) return false;
         const sequelize = new Sequelize({...this.options, database: ""});
         const res = await sequelize.query(`CREATE DATABASE IF NOT EXISTS ${this.options.database}`);
         const createdDatabase = res[0].affectedRows === 1;
