@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: $padding4;
-    height: 100vh;
+    padding: 50px $padding4 $padding4 $padding4;
+    min-height: 100vh;
     color: #FFF;
 }

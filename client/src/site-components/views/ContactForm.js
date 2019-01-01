@@ -2,10 +2,17 @@ import React from "react";
 import Form from "../../components/styled/Form";
 import {Button} from "../../components/styled/Button";
 import RecaptchaWidget from "../../components/RecaptchaWidget";
+import {useInputs} from "../hooks/useInputs";
 
 export const ContactForm = ({onSubmit, validation, ...props}) => {
-    let form = {};
-    //TODO: Use react hooks.
+    const inputs = useInputs(["name", "email", "subject", "message"]);
+
+    const focusOnEnter = (event, fieldName) => {
+        if(event.key === "Enter"){
+            event.preventDefault();
+            inputs.refs[fieldName].focus();
+        }
+    };
 
     return (
         <Form wrapper={4} className="w-100" {...props}>
@@ -14,26 +21,29 @@ export const ContactForm = ({onSubmit, validation, ...props}) => {
                     type="text"
                     className="input"
                     placeholder="Name"
-                    ref={(name) => {form.name = name}}
+                    onKeyPress={(event) => focusOnEnter(event, "email")}
+                    {...inputs.name}
                 />
                 <input
                     type="text"
                     className="input"
                     placeholder="Email"
-                    ref={(email) => {form.email = email}}
+                    onKeyPress={(event) => focusOnEnter(event, "subject")}
+                    {...inputs.email}
                 />
             </Form.Columns>
             <input
                 type="text"
                 className="input"
                 placeholder="Subject"
-                ref={(subject) => {form.subject = subject}}
+                onKeyPress={(event) => focusOnEnter(event, "message")}
+                {...inputs.subject}
             />
             <textarea
                 rows={6}
                 className="input"
                 placeholder="Message"
-                ref={(message) => {form.message = message;}}
+                {...inputs.message}
             />
             <RecaptchaWidget
                 siteKey="6LeN6YUUAAAAAMbSolGNWqSamZ-UXZ0KqJPTRy8Y"
@@ -43,12 +53,7 @@ export const ContactForm = ({onSubmit, validation, ...props}) => {
                 className="b-secondary mt-15"
                 onClick={(event) => {
                     event.preventDefault();
-                    onSubmit({
-                        name: form.name.value,
-                        email: form.email.value,
-                        subject: form.subject.value,
-                        message: form.message.value
-                    });
+                    onSubmit(inputs.values);
                 }}
             >Submit</Button>
         </Form>
