@@ -9,6 +9,11 @@
     100% { transform: scale(1); }
 }
 
+@keyframes toDarkPrimaryBackground {
+    from {background-color: initial;}
+    to {background-color: $primary2;}
+}
+
 @keyframes fadeBackground {
     from {
         background-color: rgba($secondary, .85);

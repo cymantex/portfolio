@@ -2,22 +2,7 @@
  * Inputs
  *----------------------------------------*/
 @mixin allInputs($elementState){
-    input[type=password]#{$elementState},
-    input[type=email]#{$elementState},
-    input[type=url]#{$elementState},
-    input[type=date]#{$elementState},
-    input[type=month]#{$elementState},
-    input[type=time]#{$elementState},
-    input[type=datetime]#{$elementState},
-    input[type=datetime-local]#{$elementState},
-    input[type=week]#{$elementState},
-    input[type=tel]#{$elementState},
-    input[type=color]#{$elementState},
-    input[type=number]#{$elementState},
-    input[type=search]#{$elementState},
-    input[type=text]#{$elementState},
-    select#{$elementState},
-    textarea#{$elementState} {
+    .input {
         @content;
     }
 }

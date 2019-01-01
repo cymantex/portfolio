@@ -1,10 +1,10 @@
 const api = `/api`;
-const event = `${api}/event`;
+const contact = `${api}/contact`;
 
 interface Routes {
     [x: string]: any
 }
 
 export const routes: Routes = {
-    event
+    contact
 };

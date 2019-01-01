@@ -1,5 +1,5 @@
 import React from "react";
-import {classNames, getOptionalClasses, filterOutOptionalClasses} from "../utils/className";
+import {classNames, getOptionalClasses, filterOutOptionalClasses} from "../../utils/className";
 
 export const Menu = ({
     className = "",

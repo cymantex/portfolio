@@ -2,3 +2,8 @@ body {
     position: relative;
     overflow: hidden;
 }
+
+#react-app {
+    height: 100vh;
+    @include pulsingRainbowBackground();
+}

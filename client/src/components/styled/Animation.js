@@ -1,5 +1,5 @@
 import React from "react";
-import {classNames} from "../utils/className";
+import {classNames} from "../../utils/className";
 
 export const Animation = ({
     animation = "fadeIn",

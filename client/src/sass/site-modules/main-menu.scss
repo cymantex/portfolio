@@ -29,7 +29,8 @@
         }
 
         &.mobile-menu-open {
-            background-color: #2C344A;
+            animation: toDarkPrimaryBackground .4s;
+            animation-fill-mode: forwards;
 
             .menu:last-child {
                 transform: translateX(0);

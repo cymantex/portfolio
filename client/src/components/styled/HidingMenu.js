@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {compose} from "redux";
 import PropTypes from "prop-types";
 import {Menu} from "./Menu";
-import {classNames, getOptionalClasses, filterOutOptionalClasses} from "../utils/className";
+import {classNames, getOptionalClasses, filterOutOptionalClasses} from "../../utils/className";
 
 class HidingMenu extends Component {
     static defaultProps = {

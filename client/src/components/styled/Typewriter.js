@@ -1,7 +1,7 @@
 import React from "react";
 
-export const Typewriter = ({children}) => {
-    let delays = [0];
+export const Typewriter = ({delay = 500, children}) => {
+    let delays = [delay];
     let typingspeeds = [];
 
     React.Children.forEach(children, (child) => {

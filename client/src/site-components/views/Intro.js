@@ -1,10 +1,10 @@
 import React from "react";
-import {Typewriter} from "../../components/Typewriter";
-import TypewriterAnimation from "../../components/TypewriterAnimation";
+import {Typewriter} from "../../components/styled/Typewriter";
+import TypewriterAnimation from "../../components/styled/TypewriterAnimation";
 
 export const Intro = ({children, ...props}) => (
     <section id="intro" {...props}>
-        <Typewriter>
+        <Typewriter delay={500}>
             <h1>
                 <TypewriterAnimation
                     text="Greetings, I'm Simon Eriksson"

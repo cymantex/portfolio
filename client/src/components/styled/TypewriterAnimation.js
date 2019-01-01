@@ -30,7 +30,7 @@ export default class TypewriterAnimation extends Component {
     componentDidMount(){
         this.timeouts = [];
 
-        setTimeout(() => {
+        this.timeouts.push(setTimeout(() => {
             this.state.queue.forEach((character, i) => {
                 this.timeouts.push(setTimeout(() => {
                     this.setState((prevState) => ({
@@ -38,7 +38,7 @@ export default class TypewriterAnimation extends Component {
                     }));
                 }, this.props.typingSpeed * i));
             });
-        }, this.props.delay);
+        }, this.props.delay));
     }
 
     componentWillUnmount() {
