@@ -7,3 +7,9 @@ body {
     height: 100vh;
     @include pulsingRainbowBackground();
 }
+
+@media (max-width: $mediaSmall) {
+    body {
+        overflow: initial;
+    }
+}

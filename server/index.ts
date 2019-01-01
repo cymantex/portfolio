@@ -1,7 +1,12 @@
-import {startApp} from "./setup/startApp";
-import settings from "./settings.json";
+import Server from "./setup/Server";
+import {databaseOptions, serverOptions} from "./settings";
+import Database from "./setup/Database";
+import {log} from "./utils/log";
 
-startApp(settings).catch(err => {
-    console.error(err);
-    process.exit(1);
+const database = new Database(databaseOptions);
+const server = new Server(serverOptions, database);
+
+server.start().catch(async err => {
+    log.error(err);
+    await server.stop();
 });
