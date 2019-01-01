@@ -4,10 +4,10 @@
     box-shadow: none;
     border: none;
     padding: $padding4;
-    background-color: lighten($secondary, 80%);
+    background-color: #f9f9f9;
     color: $secondary;
 
     &::placeholder {
-        color: lighten($secondary, 50%);
+        color: #999;
     }
 }

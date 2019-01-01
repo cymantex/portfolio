@@ -3,6 +3,7 @@ import {Request as Req, Response} from "express";
 import {Sequelize} from "sequelize-typescript";
 import Validator, {ValidationSchema} from "../utils/Validator";
 import {validateGrecaptcha} from "../utils/validateGrecaptcha";
+import Emailer from "../utils/Emailer";
 
 interface ContactForm {
     name: string,
@@ -27,7 +28,8 @@ export default class ContactRequest extends Request {
         }
 
         return validateGrecaptcha(this.req)
-            .then(() => this.responseHandler.sendSuccess("All Good!"))
+            .then(() => new Emailer(this.req).sendContactFormMail())
+            .then(() => this.responseHandler.sendSuccess())
             .catch(err => this.responseHandler.sendBadRequest(err));
     }
 
