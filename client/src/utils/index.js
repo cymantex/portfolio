@@ -18,3 +18,11 @@ export const camelCaseKeys = (object = {}) => {
             .reduce((acc, obj) => ({...acc, ...obj}))
     }
 };
+
+export const getLanguageIcon = (language) => {
+    const languageIcons = ["php", "javascript", "typescript", "java", "css"];
+
+    return languageIcons.includes(language.toLowerCase())
+        ?  `/images/${language.toLowerCase()}-icon.jpg`
+        : "/images/code-icon.jpg";
+};

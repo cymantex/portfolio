@@ -4,7 +4,7 @@ import TypewriterAnimation from "../../components/styled/TypewriterAnimation";
 
 export const Intro = ({children, ...props}) => (
     <section id="intro" {...props}>
-        <Typewriter delay={500}>
+        <Typewriter>
             <h1>
                 <TypewriterAnimation
                     text="Greetings, I'm Simon Eriksson"

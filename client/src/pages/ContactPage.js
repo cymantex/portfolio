@@ -4,7 +4,7 @@ import {MainMenu} from "../site-components/views/MainMenu";
 import {ContactForm} from "../site-components/views/ContactForm";
 import ContactFormController from "../site-components/controllers/ContactFormController";
 
-export const Contact = () => (
+export const ContactPage = () => (
     <Page id="contact-page">
         <MainMenu/>
         <div className="glass-container">

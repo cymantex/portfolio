@@ -1,15 +1,8 @@
 body {
     position: relative;
-    overflow: hidden;
+    background-color: $secondary;
 }
 
 #react-app {
-
     @include pulsingRainbowBackground();
-}
-
-@media (max-width: $mediaSmall) {
-    body {
-        overflow: initial;
-    }
 }

@@ -22,12 +22,12 @@ export const parsePortfolio = (key, response) => _.flatMap(Object
     }));
 
 export const parseRepositories = (key, repositories) => {
-    return repositories.map(repository => ({
+    return _.sortBy(repositories.map(repository => ({
         createdAt: repository.created_at,
         description: repository.description,
-        url: repository.url,
+        url: repository.svn_url,
         updatedAt: repository.updated_at,
         name: repository.name,
         language: repository.language
-    }));
+    })), ["createdAt"]).reverse();
 };

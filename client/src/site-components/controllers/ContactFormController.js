@@ -4,6 +4,7 @@ import withValidation from "../../components/hocs/withValidation";
 import Validator from "../../utils/Validator";
 import ContactFormApi from "../../utils/api/ContactFormApi";
 import {validationActions} from "../../utils/constants/validationActions";
+import {parseError} from "../../utils/parseError";
 
 class ContactFormController extends Component {
     formIsValid = (contactForm) => {
@@ -73,7 +74,7 @@ class ContactFormController extends Component {
                 .catch(err => {
                     console.table(err);
                     window.grecaptcha.reset();
-                    this.props.validation.setErrorState(err.response.data);
+                    this.props.validation.setErrorState(parseError(err));
                 });
         }
     };

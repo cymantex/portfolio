@@ -1,21 +1,29 @@
-import React, {Fragment} from "react";
+import React from "react";
+import {FancyLoader} from "./FancyLoader";
+import {Moment} from "../../components/views/Moment";
+import {getLanguageIcon} from "../../utils";
+import {LanguageIcon} from "./LanguageIcon";
 
 export const RepositoryView = ({repositories, ...props}) => {
+    if(repositories.length === 0){
+        return <FancyLoader/>;
+    }
+
     console.log(repositories);
     return (
-        <div {...props}>
-            <h1>Repositories</h1>
-            <hr/>
+        <div className="repositories" {...props}>
             {repositories.map((repository, i) => (
-                <Fragment key={i}>
-                    <p>Created at: {repository.createdAt}</p>
-                    <p>Updated at: {repository.updatedAt}</p>
-                    <p>Language: {repository.language}</p>
-                    <p>Name: {repository.name}</p>
-                    <p>Description: {repository.description}</p>
-                    <p>Url: {repository.url}</p>
-                    <hr/>
-                </Fragment>
+                <a style={{backgroundImage: `url(${getLanguageIcon(repository.language)})`}}
+                   className="repository"
+                   href={repository.url}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   key={i}
+                >
+                    <LanguageIcon language={repository.language}/>
+                    <span className="title">{repository.name}</span>
+                    <span className="date"><Moment time={repository.createdAt}/></span>
+                </a>
             ))}
         </div>
     );

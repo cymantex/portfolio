@@ -5,6 +5,15 @@
     transition: .2s ease-out;
 }
 
+@mixin overlay(){
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
 @mixin pulsingRainbowBackground(){
     animation-name: fadeBackground;
     animation-duration: 10s;
@@ -15,11 +24,7 @@
 
     &:after {
         background-image: url(/images/4.jpg);
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        @include overlay();
         z-index: -1;
         content: '';
         background-size: cover;

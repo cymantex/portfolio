@@ -8,9 +8,9 @@ export const MainMenu = (props) => (
         <Link to={routes.homePage}>Home</Link>
         <a href="#cv">CV</a>
         <a href="#projects">Projects</a>
-        <a href="#repositories">Repositories</a>
+        <Link to={routes.repositoriesPage}>Repositories</Link>
         <a href="#reviews">Testimonials</a>
         <a href="#reviews">Skills</a>
-        <Link to={routes.contact}>Contact</Link>
+        <Link to={routes.contactPage}>Contact</Link>
     </HidingMenu>
 );

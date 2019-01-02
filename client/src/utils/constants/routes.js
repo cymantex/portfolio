@@ -1,5 +1,5 @@
 export const routes = {
-    contact: "/contact",
+    contactPage: "/contact",
     homePage: "/",
-
+    repositoriesPage: "/repositories"
 };
