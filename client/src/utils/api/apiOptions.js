@@ -12,12 +12,20 @@ export const apiOptions = {
         }
     },
     projectReviews: {
-        route: FreelancerApi.projectReviews,
-        parser: parseReview
+        routes: {
+            projectReviews: FreelancerApi.projectReviews,
+        },
+        parsers: {
+            projectReviews: parseReview
+        }
     },
     contestReviews: {
-        route: FreelancerApi.contestReviews,
-        parser: parseReview
+        routes: {
+            contestReviews: FreelancerApi.contestReviews,
+        },
+        parsers: {
+            contestReviews: parseReview
+        }
     },
     repositories: {
         routes: {

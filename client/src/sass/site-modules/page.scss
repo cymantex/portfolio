@@ -9,6 +9,12 @@
     padding: 75px $padding4 $padding4 $padding4;
     min-height: 100vh;
     color: #FFF;
+
+    &-title {
+        font-size: 50px;
+        margin: 16px 0;
+        text-align: center;
+    }
 }
 
 @media (max-width: $mediaSmall) {

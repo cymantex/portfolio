@@ -4,7 +4,6 @@
 .repositories {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 30px;
     width: 100%;
 
     .repository {
@@ -16,15 +15,13 @@
         flex-direction: column;
         position: relative;
         min-height: 225px;
-        border-radius: 5px;
         background-color: $primary;
         background-size: cover;
         background-position: center center;
         background-blend-mode: hard-light;
         background-repeat: no-repeat;
         box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-        transition: box-shadow 150ms ease-out;
-        outline: none;
+        user-select: none;
 
         i {
             position: absolute;
@@ -59,10 +56,7 @@
 
         &:after {
             @include overlay();
-            z-index: 1;
-            border-radius: 5px;
             background-color: rgba($primary2, 0.6);
-            pointer-events: none;
             transition: background 250ms ease-out;
         }
     }

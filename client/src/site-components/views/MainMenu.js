@@ -9,7 +9,7 @@ export const MainMenu = (props) => (
         <a href="#cv">CV</a>
         <a href="#projects">Projects</a>
         <Link to={routes.repositoriesPage}>Repositories</Link>
-        <a href="#reviews">Testimonials</a>
+        <Link to={routes.reviewsPage}>Reviews</Link>
         <a href="#reviews">Skills</a>
         <Link to={routes.contactPage}>Contact</Link>
     </HidingMenu>
