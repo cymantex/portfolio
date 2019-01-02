@@ -1,4 +1,5 @@
 export interface ValidationSchema {
+    [key: string]: string | boolean | number,
     value: string,
     name: string,
     required?: boolean,
@@ -8,23 +9,22 @@ export interface ValidationSchema {
     emailMessage?: string,
     maxLength?: number,
     maxLengthMessage?: string
-};
+}
 
 export default class Validator {
     fields: ValidationSchema[];
-    errors: string[];
+    errors: {[fieldName: string]: string | boolean | number};
 
     constructor(schema: ValidationSchema[]){
         this.fields = schema;
-        this.errors = [];
+        this.errors = {};
     }
 
-    validate(): string[] {
+    validate(): Validator {
         return this
             .checkRequired()
             .checkIfEmail()
-            .checkMaxLength()
-            .getErrors();
+            .checkMaxLength();
     }
 
     checkRequired(): Validator {
@@ -33,10 +33,11 @@ export default class Validator {
             .filter(field => field.required)
             .filter(field => !field.value)
             .forEach(field => {
-                this.errors.push((field.requiredMessage)
-                    ? field.requiredMessage
-                    : `The ${field.name} field is required`);
-                field.hasError = true;
+                this.addError({
+                    field,
+                    message: `The ${field.name} field is required.`,
+                    errorType: "required"
+                });
             });
 
         return this;
@@ -50,12 +51,11 @@ export default class Validator {
             .filter(field => field.isEmail)
             .filter(field => !looksLikeEmail.test(field.value))
             .forEach(field => {
-                this.errors.push(
-                    (field.emailMessage)
-                        ? field.emailMessage
-                        : `Please provide a valid email address.`
-                );
-                field.hasError = true;
+                this.addError({
+                    field,
+                    message: `Please provide a valid email address.`,
+                    errorType: "email"
+                });
             });
 
         return this;
@@ -66,18 +66,40 @@ export default class Validator {
             .filter(field => field.maxLength)
             .filter(field => field.value.length > field.maxLength)
             .forEach(field => {
-                this.errors.push((field.maxLengthMessage)
-                    ? field.maxLengthMessage
-                    : (`The ${field.name} field can have a maximum of ${field.maxLength} ` +
-                        `characters, you have entered ${field.value.length}.`)
-                );
-                field.hasError = true;
+                this.addError({
+                    field,
+                    message: (
+                        `The ${field.name} field can have a maximum of ${field.maxLength} ` +
+                        `characters, you have entered ${field.value.length}.`
+                    ),
+                    errorType: "maxLength"
+                });
             });
 
         return this;
     }
 
-    getErrors = (): string[] => {
+    hasErrors = (): boolean => {
+        return Object.keys(this.errors).length > 0;
+    };
+
+    getErrors = (): object => {
         return this.errors;
     };
+
+    private addError = ({
+        field,
+        message,
+        errorType
+    }: {
+        field: ValidationSchema,
+        message: string,
+        errorType: string
+    }) => {
+        if(this.errors[field.name]) return;
+
+        this.errors[field.name] = (field[`${errorType}Message`])
+            ? field[`${errorType}Message`]
+            : message;
+    }
 }

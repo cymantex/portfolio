@@ -19,12 +19,10 @@ export default class ContactRequest extends Request {
 
     async handlePost() {
         const validationSchema = ContactRequest.getValidationSchema(this.req.body);
-        const errors = new Validator(validationSchema).validate();
-        console.log(this.req.body);
-        console.log(errors);
+        const validator = new Validator(validationSchema).validate();
 
-        if(errors.length > 0){
-            return this.responseHandler.sendBadRequest(errors);
+        if(validator.hasErrors()){
+            return this.responseHandler.sendBadRequest(validator.getErrors());
         }
 
         return validateGrecaptcha(this.req)

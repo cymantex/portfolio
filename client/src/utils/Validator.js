@@ -1,15 +1,14 @@
 export default class Validator {
     constructor(schema){
         this.fields = schema;
-        this.errors = [];
+        this.errors = {};
     }
 
     validate(){
         return this
             .checkRequired()
             .checkIfEmail()
-            .checkMaxLength()
-            .getErrors();
+            .checkMaxLength();
     }
 
     checkRequired(){
@@ -18,10 +17,11 @@ export default class Validator {
             .filter(field => field.required)
             .filter(field => !field.value)
             .forEach(field => {
-                this.errors.push((field.requiredMessage)
-                    ? field.requiredMessage
-                    : `The ${field.name} field is required`);
-                field.hasError = true;
+                this.addError({
+                    field,
+                    message: `The ${field.name} field is required.`,
+                    errorType: "required"
+                });
             });
 
         return this;
@@ -35,12 +35,11 @@ export default class Validator {
             .filter(field => field.isEmail)
             .filter(field => !looksLikeEmail.test(field.value))
             .forEach(field => {
-                this.errors.push(
-                    (field.emailMessage)
-                        ? field.emailMessage
-                        : `Please provide a valid email address.`
-                );
-                field.hasError = true;
+                this.addError({
+                    field,
+                    message: `Please provide a valid email address.`,
+                    errorType: "email"
+                });
             });
 
         return this;
@@ -51,18 +50,32 @@ export default class Validator {
             .filter(field => field.maxLength)
             .filter(field => field.value.length > field.maxLength)
             .forEach(field => {
-                this.errors.push((field.maxLengthMessage)
-                    ? field.maxLengthMessage
-                    : (`The ${field.name} field can have a maximum of ${field.maxLength} ` +
-                        `characters, you have entered ${field.value.length}.`)
-                );
-                field.hasError = true;
+                this.addError({
+                    field,
+                    message: (
+                        `The ${field.name} field can have a maximum of ${field.maxLength} ` +
+                        `characters, you have entered ${field.value.length}.`
+                    ),
+                    errorType: "maxLength"
+                });
             });
 
         return this;
     }
 
+    hasErrors = () => {
+        return Object.keys(this.errors).length > 0;
+    };
+
     getErrors = () => {
         return this.errors;
     };
+
+    addError = ({field, message, errorType}) => {
+        if(this.errors[field.name]) return;
+
+        this.errors[field.name] = (field[`${errorType}Message`])
+            ? field[`${errorType}Message`]
+            : message;
+    }
 }

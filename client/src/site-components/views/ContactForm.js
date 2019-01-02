@@ -1,61 +1,60 @@
-import React from "react";
+import React, {Fragment} from "react";
 import Form from "../../components/styled/Form";
 import {Button} from "../../components/styled/Button";
 import RecaptchaWidget from "../../components/RecaptchaWidget";
-import {useInputs} from "../hooks/useInputs";
+import {useInputs, focusOnEnter, addInputClass} from "../hooks/useInputs";
+import {ValidationMessage} from "./Messages";
+import {validationActions} from "../../utils/constants/validationActions";
 
 export const ContactForm = ({onSubmit, validation, ...props}) => {
-    const inputs = useInputs(["name", "email", "subject", "message"]);
-
-    const focusOnEnter = (event, fieldName) => {
-        if(event.key === "Enter"){
-            event.preventDefault();
-            inputs.refs[fieldName].focus();
-        }
-    };
+    let inputs = useInputs(["name", "email", "subject", "message"]);
+    inputs = focusOnEnter(inputs, {name: "email", email: "subject", subject: "message"});
+    inputs = addInputClass(inputs, validation);
 
     return (
-        <Form wrapper={4} className="w-100" {...props}>
-            <Form.Columns>
+        <Fragment>
+            <ValidationMessage
+                successActions={[validationActions.contactForm]}
+                successHeading="Your message has been sent"
+                validation={validation}
+            />
+            <Form wrapper={4} className="w-100" {...props}>
+                <Form.Columns>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        {...inputs.name}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Email"
+                        {...inputs.email}
+                    />
+                </Form.Columns>
                 <input
                     type="text"
-                    className="input"
-                    placeholder="Name"
-                    onKeyPress={(event) => focusOnEnter(event, "email")}
-                    {...inputs.name}
+                    placeholder="Subject"
+                    {...inputs.subject}
                 />
-                <input
-                    type="text"
-                    className="input"
-                    placeholder="Email"
-                    onKeyPress={(event) => focusOnEnter(event, "subject")}
-                    {...inputs.email}
+                <textarea
+                    rows={6}
+                    placeholder="Message"
+                    {...inputs.message}
                 />
-            </Form.Columns>
-            <input
-                type="text"
-                className="input"
-                placeholder="Subject"
-                onKeyPress={(event) => focusOnEnter(event, "message")}
-                {...inputs.subject}
-            />
-            <textarea
-                rows={6}
-                className="input"
-                placeholder="Message"
-                {...inputs.message}
-            />
-            <RecaptchaWidget
-                siteKey="6LeN6YUUAAAAAMbSolGNWqSamZ-UXZ0KqJPTRy8Y"
-            />
-            <Button
-                dark
-                className="b-secondary mt-15"
-                onClick={(event) => {
-                    event.preventDefault();
-                    onSubmit(inputs.values);
-                }}
-            >Submit</Button>
-        </Form>
+                <RecaptchaWidget
+                    siteKey="6LeN6YUUAAAAAMbSolGNWqSamZ-UXZ0KqJPTRy8Y"
+                />
+                <Button
+                    dark
+                    className="b-secondary mt-15"
+                    disabled={validation.loading || validation.completedAction}
+                    loading={validation.loading}
+                    onClick={async (event) => {
+                        event.preventDefault();
+                        onSubmit(inputs.values);
+                    }}
+                >Submit</Button>
+            </Form>
+        </Fragment>
     );
 };

@@ -8,12 +8,12 @@
     border: 1px solid lightToDark($gray);
     background-color: $gray;
     transition: .1s linear;
-    font-weight: lighter;
+    font-size: 15px;
+    font-weight: 300;
 
     .heading {
-        font-weight: normal;
-        font-size: $heading;
-        margin-bottom: 5px;
+        font-weight: 400;
+        font-size: $h5;
     }
 
     > * {
@@ -24,7 +24,7 @@
 @each $name, $color in $darkColors {
     .message.#{$name} {
         border: 1px solid rgba($color, .5);
-        background-color: glassToLight($color);
+        background-color: darkToLight($color);
         color: darkToDarker($color);
 
         &.loading:not(.dark):after {

@@ -10,3 +10,9 @@
     min-height: 100vh;
     color: #FFF;
 }
+
+@media (max-width: $mediaSmall) {
+    .page {
+        justify-content: flex-start;
+    }
+}
