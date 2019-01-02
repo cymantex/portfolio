@@ -1,6 +1,7 @@
 import defaultData from "../utils/constants/defaultData";
 import {Sequelize} from "sequelize-typescript";
 import {SequelizeConfig} from "sequelize-typescript/lib/types/SequelizeConfig";
+import {constants} from "../utils/constants";
 
 export default class Database {
     options: any;
@@ -46,7 +47,7 @@ export default class Database {
     async loadDefaultData(): Promise<void> {
         await this.createIfNotExists();
         const sequelize = new Sequelize(this.options);
-        sequelize.addModels([`${__dirname}/../models/*.ts`]);
+        sequelize.addModels([`${__dirname}/../models/*.${constants.fileType}`]);
         await sequelize.sync();
 
         await Promise.all(Object.keys(defaultData).map(model => {

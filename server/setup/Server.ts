@@ -64,7 +64,7 @@ export default class Server {
     };
 
     private addRoutes(sequelize: Sequelize): void {
-        glob.sync(`${constants.serverRoot}/routes/*.ts`)
+        glob.sync(`${constants.serverRoot}/routes/*.${constants.fileType}`)
             .forEach(routeFile => require(routeFile).default(this.app, sequelize));
 
         if(constants.isProduction){
