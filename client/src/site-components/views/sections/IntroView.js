@@ -8,7 +8,7 @@ export const IntroView = ({children, ...props}) => (
         <Typewriter>
             <h1>
                 <TypewriterAnimation
-                    text="Greetings, I'm Simon Eriksson"
+                    text="Hi, I'm Simon Eriksson"
                     animation="bounceIn"
                     typingSpeed={75}
                 />

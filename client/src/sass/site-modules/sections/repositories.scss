@@ -13,7 +13,6 @@
         align-items: center;
         text-align: center;
         padding: 15px;
-        position: relative;
         min-height: 225px;
         @include backgroundLink($primary, rgba($primary2, 0.6), rgba($primary2, 0.4));
 

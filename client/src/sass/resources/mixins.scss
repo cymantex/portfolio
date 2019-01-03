@@ -25,6 +25,7 @@
 }
 
 @mixin backgroundLink($background, $overlay, $overlayHover){
+    position: relative;
     background-color: $background;
     background-size: cover;
     background-position: center center;

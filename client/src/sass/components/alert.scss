@@ -9,8 +9,7 @@
 }
 
 body.alert-rendered {
-    overflow: hidden;
-    min-height: 100vh;
+
 }
 
 .alert {
@@ -23,22 +22,22 @@ body.alert-rendered {
     }
 
     .alert-title {
-        font-weight: bold;
-        font-size: 20px;
+        font-weight: 300;
+        font-size: $h4;
     }
 
     .alert-main {
-        transform: scale(0.8);
-        margin: 5vh auto;
-        width: 540px;
+        transform: scale(0.5, 0.5);
+        transform-origin: bottom;
+        margin: 0 auto;
+        width: 100%;
         max-width: 100%;
-        border-radius: 10px;
         z-index: 1001;
         transition: transform .2s ease-out;
-        will-change: transform;
 
         &.alert-visible {
-            transform: scale(1);
+            transform: scale(1, 1);
+            transform-origin: top;
         }
     }
 
@@ -48,7 +47,8 @@ body.alert-rendered {
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid rgba(34,36,38,.15);
-        border-radius: 5px 5px 0 0;
+        background-color: $primary2;
+        color: #FFF;
 
         > div:not(.close) {
             display: flex;
@@ -97,8 +97,9 @@ body.alert-rendered {
         left: 0;
         bottom: 0;
         right: 0;
-        padding: 1em;
+        height: fit-content;
         opacity: 0;
+        padding: 15px;
         background-color: rgba(0,0,0,.85);
         transition: opacity .3s linear;
         z-index: 1000;

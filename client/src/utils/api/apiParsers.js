@@ -8,18 +8,22 @@ export const parseReview = (key, response) => response.result.reviews.map(review
     userId: review.from_user_id
 }));
 
-export const parsePortfolio = (key, response) => _.flatMap(Object
-    .values(response.result.portfolios))
-    .map(portfolioItem => ({
-        contentType: portfolioItem.content_type,
-        description: portfolioItem.description,
-        files: portfolioItem.files.map(file => ({
-            url: file.cdn_url,
-            filename: file.filename,
-            thumbnails: file.thumbnails.map(thumbnail => thumbnail.cdn_url)
-        })),
-        title: portfolioItem.title
-    }));
+export const parsePortfolio = (key, response) => {
+    console.log(response);
+
+    return _.flatMap(Object
+        .values(response.result.portfolios))
+        .map(portfolioItem => ({
+            contentType: portfolioItem.content_type,
+            description: portfolioItem.description,
+            files: portfolioItem.files.map(file => ({
+                url: file.cdn_url,
+                filename: file.filename,
+                thumbnails: file.thumbnails.map(thumbnail => thumbnail.cdn_url)
+            })),
+            title: portfolioItem.title
+        }));
+};
 
 export const parseRepositories = (key, repositories) => {
     return _.sortBy(repositories.map(repository => ({
