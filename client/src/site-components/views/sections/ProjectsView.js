@@ -27,8 +27,8 @@ export class ProjectsView extends Component {
     renderProject = (projectItem, i) => {
         return (
             <div
-                style={(projectItem.files.length > 0)
-                    ? {backgroundImage: `url(${projectItem.files[0].url})`} : {}}
+                style={(projectItem.thumbnail)
+                    ? {backgroundImage: `url(${projectItem.thumbnail})`} : {}}
                 className="project"
                 onClick={() => this.showProjectAlert(projectItem)}
                 key={i}

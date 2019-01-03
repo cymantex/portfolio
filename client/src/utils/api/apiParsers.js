@@ -9,15 +9,22 @@ export const parseReview = (key, response) => response.result.reviews.map(review
 }));
 
 export const parsePortfolio = (key, response) => {
-    console.log(response);
+    const getThumbnail = (file, index) => {
+        if(index <= 0) return {};
+        return (file.thumbnails[index])
+            ? file.thumbnails[index]
+            : getThumbnail(file, index - 1);
+    };
 
     return _.flatMap(Object
         .values(response.result.portfolios))
         .map(portfolioItem => ({
             contentType: portfolioItem.content_type,
             description: portfolioItem.description,
+            thumbnail: (portfolioItem.files[0] && getThumbnail(portfolioItem.files[0], 4))
+                ? getThumbnail(portfolioItem.files[0], 4).cdn_url : null,
             files: portfolioItem.files.map(file => ({
-                url: file.cdn_url,
+                url: getThumbnail(file, 6).cdn_url,
                 filename: file.filename,
                 thumbnails: file.thumbnails.map(thumbnail => thumbnail.cdn_url)
             })),
