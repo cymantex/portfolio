@@ -7,7 +7,7 @@ export const MainMenu = (props) => (
     <HidingMenu id="main-menu" {...props}>
         <Link to={routes.homePage}>Home</Link>
         <a href="#cv">CV</a>
-        <a href="#projects">Projects</a>
+        <Link to={routes.projectsPage}>Projects</Link>
         <Link to={routes.repositoriesPage}>Repositories</Link>
         <Link to={routes.reviewsPage}>Reviews</Link>
         <a href="#reviews">Skills</a>

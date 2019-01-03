@@ -5,7 +5,7 @@ import ReviewsController from "../site-components/controllers/ReviewsController"
 import {ReviewsView} from "../site-components/views/ReviewsView";
 
 export const ReviewsPage = () => (
-    <Page id="repositories-page">
+    <Page id="reviews-page">
         <MainMenu/>
         <ReviewsController>
             <ReviewsView/>
