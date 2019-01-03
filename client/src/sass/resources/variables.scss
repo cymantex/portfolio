@@ -7,7 +7,6 @@ $secondary : #1D1D1F;
 $white     : #ffffff;
 $black     : #000000;
 $gray      : #f3f5f7;
-$red: #D24A3D;
 
 //----------------------------------------------
 // Bootstrap Colors
@@ -37,9 +36,10 @@ $bInfo      : #17a2b8;
 //----------------------------------------------
 $darkColors: (
     (primary     $primary)
+    (primary-2   $primary2)
     (secondary   $secondary)
     (black       $black)
-    (b-blue       $bBlue)
+    (b-blue      $bBlue)
     (b-yellow    $bYellow)
     (b-orange    $bOrange)
     (b-teal      $bTeal)

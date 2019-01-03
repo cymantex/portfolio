@@ -2,14 +2,23 @@
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, .9);
     background-clip: padding-box;
     font-size: $h5;
     border-radius: 2px;
     line-height: 1.5;
     box-shadow: none;
     border: none;
-    color: #495057;
+    color: #000;
+
+    &.disabled {
+        background-color: rgba(lighten($bGray, 20%), .8);
+    }
+
+    &.error {
+        background-color: rgba(#FDF5F5, .9);
+        color: #000;
+    }
 
     &::placeholder {
         font-size: $h5;

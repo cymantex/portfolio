@@ -24,7 +24,7 @@
 @each $name, $color in $darkColors {
     .message.#{$name} {
         border: 1px solid rgba($color, .5);
-        background-color: darkToLight($color);
+        background-color: rgba(darkToLight($color), .9);
         color: darkToDarker($color);
 
         &.loading:not(.dark):after {

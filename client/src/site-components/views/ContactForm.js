@@ -18,7 +18,7 @@ export const ContactForm = ({onSubmit, validation, ...props}) => {
                 successHeading="Your message has been sent"
                 validation={validation}
             />
-            <Form wrapper={4} className="w-100" {...props}>
+            <Form {...props} autoComplete="off">
                 <Form.Columns>
                     <input
                         type="text"
@@ -46,7 +46,7 @@ export const ContactForm = ({onSubmit, validation, ...props}) => {
                 />
                 <Button
                     dark
-                    className="b-secondary mt-15"
+                    className="primary mt-15"
                     disabled={validation.loading || validation.completedAction}
                     loading={validation.loading}
                     onClick={async (event) => {

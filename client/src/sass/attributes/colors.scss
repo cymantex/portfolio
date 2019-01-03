@@ -52,6 +52,10 @@
             &.glass {
                 background-color: glassColor(darkToDarker($color));
             }
+
+            &.disabled {
+                background-color: rgba(lighten(gray, 10%), .4);
+            }
         }
 
         &.light {

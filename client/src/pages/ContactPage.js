@@ -7,8 +7,21 @@ import ContactFormController from "../site-components/controllers/ContactFormCon
 export const ContactPage = () => (
     <Page id="contact-page">
         <MainMenu/>
-        <ContactFormController>
-            <ContactForm/>
-        </ContactFormController>
+        <div className="columns breakpoint md">
+            <div className="column">
+                <h1 className="display-3">Contact me</h1>
+                <ContactFormController>
+                    <ContactForm/>
+                </ContactFormController>
+            </div>
+            <div className="column">
+                <h2 className="display-3">My location</h2>
+                <iframe
+                    title="map"
+                    id="google-map"
+                    src="https://snazzymaps.com/embed/123581"
+                />
+            </div>
+        </div>
     </Page>
 );
