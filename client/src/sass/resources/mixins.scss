@@ -5,6 +5,16 @@
     transition: .2s ease-out;
 }
 
+@mixin divideChildren(){
+    > * {
+        margin-bottom: $margin3;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
 @mixin overlay(){
     content: "";
     position: absolute;

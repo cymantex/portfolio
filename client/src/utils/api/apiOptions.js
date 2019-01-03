@@ -4,29 +4,19 @@ import GithubApi from "./GithubApi";
 
 export const apiOptions = {
     portfolio: {
-        routes: {
-            portfolio: FreelancerApi.portfolio,
-        },
-        parsers: {
-            portfolio: parsePortfolio
-        }
+        route: FreelancerApi.portfolio,
+        parse: parsePortfolio
     },
-    reviews: {
-        routes: {
-            projectReviews: FreelancerApi.projectReviews,
-            contestReviews: FreelancerApi.contestReviews
-        },
-        parsers: {
-            projectReviews: parseReview,
-            contestReviews: parseReview
-        }
+    projectReviews: {
+        route: FreelancerApi.projectReviews,
+        parse: parseReview
+    },
+    contestReviews: {
+        route: FreelancerApi.contestReviews,
+        parse: parseReview
     },
     repositories: {
-        routes: {
-            repositories: GithubApi.repositories,
-        },
-        parsers: {
-            repositories: parseRepositories
-        }
+        route: GithubApi.repositories,
+        parse: parseRepositories
     }
 };

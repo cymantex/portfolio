@@ -9,4 +9,4 @@ class PortfolioController extends Component {
     }
 }
 
-export default withApiData(apiOptions.portfolio)(PortfolioController);
+export default withApiData({portfolio: apiOptions.portfolio})(PortfolioController);

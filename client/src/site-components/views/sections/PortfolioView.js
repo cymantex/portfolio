@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from "react";
+import {ApiErrorMessage} from "../Messages";
 
 export default class PortfolioView extends Component {
     state = {
@@ -14,7 +15,11 @@ export default class PortfolioView extends Component {
     };
 
     render(){
-        const {portfolio, ...props} = this.props;
+        const {apiError, portfolio, ...props} = this.props;
+
+        if(apiError){
+            return <ApiErrorMessage/>;
+        }
 
         return (
             <div {...props}>

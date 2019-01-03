@@ -1,7 +1,7 @@
 /*----------------------------------------
  * Repositories
  *----------------------------------------*/
-.repositories {
+#repositories {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
@@ -39,19 +39,19 @@
 }
 
 @media (max-width: $mediaLarge) {
-    .repositories {
+    #repositories {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media (max-width: $mediaMedium) {
-    .repositories {
+    #repositories {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: $mediaSmall) {
-    .repositories {
+    #repositories {
         grid-template-columns: 1fr;
     }
 }

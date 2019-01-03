@@ -7,10 +7,8 @@ import ContactFormController from "../site-components/controllers/ContactFormCon
 export const ContactPage = () => (
     <Page id="contact-page">
         <MainMenu/>
-        <div className="glass-container">
-            <ContactFormController>
-                <ContactForm onSubmit={console.log}/>
-            </ContactFormController>
-        </div>
+        <ContactFormController>
+            <ContactForm/>
+        </ContactFormController>
     </Page>
 );

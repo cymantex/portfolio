@@ -9,4 +9,4 @@ class RepositoryController extends Component {
     }
 }
 
-export default withApiData(apiOptions.repositories)(RepositoryController);
+export default withApiData({repositories: apiOptions.repositories})(RepositoryController);

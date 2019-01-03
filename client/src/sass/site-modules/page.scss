@@ -2,10 +2,6 @@
  * Page
  *----------------------------------------*/
 .page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 75px $padding4 $padding4 $padding4;
     min-height: 100vh;
     color: #FFF;
@@ -15,6 +11,13 @@
         margin: 16px 0;
         text-align: center;
     }
+}
+
+#home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: $mediaSmall) {

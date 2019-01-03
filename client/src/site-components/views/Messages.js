@@ -3,7 +3,7 @@ import {Message} from "../../components/styled/Message";
 
 export const ValidationMessage = ({
     successActions = [],
-    errorHeading = "Please fix the following:",
+    errorHeading = "The following issues was detected:",
     successHeading = "The action completed successfully",
     validation,
     ...props
@@ -29,3 +29,12 @@ export const ValidationMessage = ({
 
     return null;
 };
+
+export const ApiErrorMessage = (props) => (
+    <Message
+        className="danger mb-15 wrapper-5"
+        heading="Failed to fetch resources from external API."
+        list={["Try again later"]}
+        {...props}
+    />
+);

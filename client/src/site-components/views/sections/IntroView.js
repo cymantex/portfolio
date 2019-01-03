@@ -1,9 +1,10 @@
 import React from "react";
-import {Typewriter} from "../../components/styled/Typewriter";
-import TypewriterAnimation from "../../components/styled/TypewriterAnimation";
+import {Typewriter} from "../../../components/styled/Typewriter";
+import TypewriterAnimation from "../../../components/styled/TypewriterAnimation";
+import {Section} from "./Section";
 
-export const Intro = ({children, ...props}) => (
-    <section id="intro" {...props}>
+export const IntroView = ({children, ...props}) => (
+    <Section id="intro" {...props}>
         <Typewriter>
             <h1>
                 <TypewriterAnimation
@@ -21,5 +22,5 @@ export const Intro = ({children, ...props}) => (
             </p>
         </Typewriter>
         {children}
-    </section>
+    </Section>
 );

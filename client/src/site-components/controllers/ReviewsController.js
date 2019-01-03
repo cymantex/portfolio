@@ -9,4 +9,7 @@ class ReviewsController extends Component {
     }
 }
 
-export default withApiData(apiOptions.reviews)(ReviewsController);
+export default withApiData({
+    projectReviews: apiOptions.projectReviews,
+    contestReviews: apiOptions.contestReviews
+})(ReviewsController);

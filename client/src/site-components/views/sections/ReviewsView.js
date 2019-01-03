@@ -1,14 +1,16 @@
-import React, {Fragment} from "react";
-import {Moment} from "../../components/views/Moment";
-import {FancyLoader} from "./FancyLoader";
+import React from "react";
+import {Moment} from "../../../components/views/Moment";
+import {Section} from "./Section";
+import {ApiErrorMessage} from "../Messages";
 
-export const ReviewsView = ({contestReviews, projectReviews, ...props}) => {
-    if(projectReviews.length === 0){
+export const ReviewsView = ({apiError, contestReviews, projectReviews, ...props}) => {
+    if(apiError){
+        return <ApiErrorMessage/>;
+    } else if(projectReviews.length === 0){
         return (
-            <Fragment>
-                <FancyLoader/>
-                <h4 style={{fontWeight: 100}} className="mt-15">Loading reviews...</h4>
-            </Fragment>
+            <Section.Loader>
+                <h4>Loading reviews...</h4>
+            </Section.Loader>
         );
     }
 
@@ -29,9 +31,9 @@ export const ReviewsView = ({contestReviews, projectReviews, ...props}) => {
     };
 
     return (
-        <div className="reviews" {...props}>
+        <Section id="reviews" {...props}>
             {projectReviews.map(renderReview)}
             {contestReviews.map(renderReview)}
-        </div>
+        </Section>
     );
 };
