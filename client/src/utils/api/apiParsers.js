@@ -4,7 +4,7 @@ export const parseReview = (key, response) => response.result.reviews.map(review
     description: review.description,
     title: review.review_context.context_name,
     url: `https://www.freelancer.com/${review.review_context.seo_url}`,
-    date: review.submitdate,
+    date: review.submitdate * 1000,
     userId: review.from_user_id
 }));
 

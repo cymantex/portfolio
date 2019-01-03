@@ -1,0 +1,49 @@
+/*----------------------------------------
+ * Reviews
+ *----------------------------------------*/
+.reviews {
+    max-width: $wrapper2;
+    margin: 0 auto;
+
+    .review {
+        display: grid;
+        grid-template-columns: 1fr 30px auto;
+        grid-template-areas: "content spacer date";
+        position: relative;
+        @include backgroundLink($primary, rgba($primary2, 0.9), rgba($primary2, 0.8));
+        padding: 15px;
+        border: 1px solid $primary2;
+        border-bottom: none;
+
+        .title {
+            display: block;
+            grid-area: content;
+            grid-row: 1/2;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-weight: 300;
+            white-space: nowrap;
+            grid-area: date;
+        }
+
+        .description {
+            font-weight: 100;
+            grid-area: content;
+            grid-row: 2/3;
+        }
+    }
+}
+
+@media (max-width: $mediaSmall){
+    .reviews {
+        .review {
+            grid-template-columns: 1fr;
+
+            .date {
+                display: none;
+            }
+        }
+    }
+}

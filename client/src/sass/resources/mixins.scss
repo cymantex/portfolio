@@ -14,6 +14,33 @@
     left: 0;
 }
 
+@mixin backgroundLink($background, $overlay, $overlayHover){
+    background-color: $background;
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: hard-light;
+    user-select: none;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+
+    > * {
+        z-index: 2;
+    }
+
+    &:hover {
+        color: inherit;
+
+        &:after {
+            background-color: $overlayHover;
+        }
+    }
+
+    &:after {
+        @include overlay();
+        background-color: $overlay;
+        transition: background 250ms ease-out;
+    }
+}
+
 @mixin pulsingRainbowBackground(){
     animation-name: fadeBackground;
     animation-duration: 10s;

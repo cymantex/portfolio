@@ -8,30 +8,20 @@
 
     .repository {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
         padding: 15px;
-        flex-direction: column;
         position: relative;
         min-height: 225px;
-        background-color: $primary;
-        background-size: cover;
-        background-position: center center;
-        background-blend-mode: hard-light;
-        background-repeat: no-repeat;
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-        user-select: none;
+        @include backgroundLink($primary, rgba($primary2, 0.6), rgba($primary2, 0.4));
 
         i {
             position: absolute;
             top: 15px;
             right: 15px;
             font-size: $display6;
-        }
-
-        > * {
-            z-index: 2;
         }
 
         .title {
@@ -44,20 +34,6 @@
             top: 15px;
             left: 15px;
             font-weight: lighter;
-        }
-
-        &:hover {
-            color: inherit;
-
-            &:after {
-                background-color: rgba($primary2, 0.4);
-            }
-        }
-
-        &:after {
-            @include overlay();
-            background-color: rgba($primary2, 0.6);
-            transition: background 250ms ease-out;
         }
     }
 }

@@ -7,7 +7,7 @@ const decapitalizeFirstLetter = (string = "") => {
 };
 
 const getRouterFile = (pages) => (
-`import React, {Fragment} from "react";
+`import React from "react";
 import {BrowserRouter, Route} from "react-router-dom";
 ${pages.map((page, i) => {
         const lastPage = i === pages.length - 1;
@@ -17,10 +17,11 @@ ${pages.map((page, i) => {
             }`;
     }).reduce((acc, next) => acc + next)}
 import {routes} from "./utils/constants/routes";
+import {Animation} from "./components/styled/Animation";
 
 export const Router = () => (
     <BrowserRouter>
-        <Fragment>
+        <Animation duration={2500}>
 ${pages.map((page, i) => {
         const path = `routes.${decapitalizeFirstLetter(page).split(".js")[0]}`;
         const component = page.split(".js")[0];
@@ -29,7 +30,7 @@ ${pages.map((page, i) => {
             lastPage ? "" : "\n"
             }`;
     }).reduce((acc, next) => acc + next)}
-        </Fragment>
+        </Animation>
     </BrowserRouter>
 );`
 );

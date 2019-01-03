@@ -11,19 +11,13 @@ export const apiOptions = {
             portfolio: parsePortfolio
         }
     },
-    projectReviews: {
+    reviews: {
         routes: {
             projectReviews: FreelancerApi.projectReviews,
+            contestReviews: FreelancerApi.contestReviews
         },
         parsers: {
-            projectReviews: parseReview
-        }
-    },
-    contestReviews: {
-        routes: {
-            contestReviews: FreelancerApi.contestReviews,
-        },
-        parsers: {
+            projectReviews: parseReview,
             contestReviews: parseReview
         }
     },

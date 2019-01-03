@@ -8,7 +8,6 @@ export const ContactPage = () => (
     <Page id="contact-page">
         <MainMenu/>
         <div className="glass-container">
-            <h1 className="display-5">Contact me</h1>
             <ContactFormController>
                 <ContactForm onSubmit={console.log}/>
             </ContactFormController>

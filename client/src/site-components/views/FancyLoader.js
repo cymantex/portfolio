@@ -1,5 +1,6 @@
 import React from "react";
+import {Loader} from "../../components/styled/Loader";
 
 export const FancyLoader = () => (
-    <p>Show some fancy loader</p>
+    <Loader inverted/>
 );
