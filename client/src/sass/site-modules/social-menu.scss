@@ -1,0 +1,44 @@
+.social-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    height: 0;
+    z-index: 10;
+
+    polygon {
+        transition: fill .2s ease-out;
+    }
+
+    > a {
+        display: block;
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            color: $primary;
+
+            polygon {
+                fill: $primary!important;
+            }
+        }
+    }
+
+    .svg-link {
+        transform: scale(.31);
+        transform-origin: top right;
+    }
+
+    .freelancer-icon {
+        g {
+            transform: translateY(-25%);
+
+            polygon {
+                fill: #FFF;
+            }
+        }
+    }
+}

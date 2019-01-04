@@ -18,7 +18,7 @@ export const ContactForm = ({onSubmit, validation, ...props}) => {
                 successHeading="Your message has been sent"
                 validation={validation}
             />
-            <Form {...props} autoComplete="off">
+            <Form {...props}>
                 <Form.Columns>
                     <input
                         type="text"
