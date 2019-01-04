@@ -1,7 +1,7 @@
 #projects {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 15px;
+    grid-gap: $dividerPrimary;
 
     .project {
         display: flex;
@@ -9,7 +9,7 @@
         align-items: center;
         text-align: center;
         min-height: 225px;
-        @include backgroundLink($primary, rgba($primary2, 0.3), rgba($primary2, 0.95));
+        @include projectBackgroundLink();
         cursor: pointer;
 
         .title {
@@ -26,16 +26,16 @@
     }
 }
 
-#project-modal {
+#project-alert {
     display: grid;
-    grid-template-columns: 1fr 350px;
+    grid-template-columns: 1fr $projectAlertSidebarWidth;
     grid-template-areas: "gallery description";
 
     .project-description {
         grid-area: description;
-        border-left: 1px solid rgba(34, 36, 38, 0.15);
-        padding-left: 20px;
-        margin-left: 20px;
+        border-left: $borderPrimary;
+        padding-left: $dividerPrimary;
+        margin-left: $dividerPrimary;
         white-space: pre-wrap;
         word-break: keep-all;
         word-wrap: break-word;
@@ -58,17 +58,17 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    #project-modal {
+    #project-alert {
         grid-template-columns: 1fr;
         grid-template-areas: initial;
 
         .project-description {
             grid-area: initial;
             margin-left: 0;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
+            margin-bottom: $dividerPrimary;
+            padding-bottom: $dividerPrimary;
             padding-left: 0;
-            border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+            border-bottom: $borderPrimary;
             border-left: none;
         }
 

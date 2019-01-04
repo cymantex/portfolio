@@ -87,7 +87,7 @@ class Alert {
         let alertRoot = ReactDomServer.renderToStaticMarkup(
             <div id={id} className={`${ROOT_CONTAINER} ${alertType} ${this.className}`} />
         );
-        let $body = $("#react-app");
+        let $body = $("body");
         $body.append(alertRoot);
         if(!$body.hasClass(ALERT_RENDERED)){
             $body.addClass(ALERT_RENDERED);
@@ -126,7 +126,7 @@ class Alert {
         $id.remove();
         Alert.id -= 1;
         if(Alert.id === 0){
-            let $body = $("#react-app");
+            let $body = $("body");
             $body.removeClass(Alert.CLASS_NAMES.ALERT_RENDERED);
             $body.removeClass(Alert.CLASS_NAMES.SCROLLBAR_FILLER);
         }

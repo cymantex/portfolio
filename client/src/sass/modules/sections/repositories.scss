@@ -12,14 +12,14 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 15px;
+        padding: $dividerPrimary;
         min-height: 225px;
-        @include backgroundLink($primary, rgba($primary2, 0.6), rgba($primary2, 0.4));
+        @include primaryBackgroundLink();
 
         i {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: $dividerPrimary;
+            right: $dividerPrimary;
             font-size: $display6;
         }
 
@@ -30,8 +30,8 @@
 
         .date {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: $dividerPrimary;
+            left: $dividerPrimary;
             font-weight: lighter;
         }
     }

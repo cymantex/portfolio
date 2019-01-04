@@ -1,25 +1,4 @@
-@keyframes loader-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(359deg); }
-}
-
-@keyframes checkbox-bounce {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.5); }
-    100% { transform: scale(1); }
-}
-
-@keyframes toDarkPrimaryBackground {
+@keyframes fadeToPrimary2 {
     from {background-color: initial;}
     to {background-color: $primary2;}
-}
-
-@keyframes fadeBackground {
-    from {
-        background-color: rgba($secondary, .85);
-    }
-
-    to {
-        background-color: rgba($secondary, .5);
-    }
 }

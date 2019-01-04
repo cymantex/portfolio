@@ -1,0 +1,13 @@
+.section-title {
+    font-size: $headingPrimary;
+    font-weight: 200;
+    letter-spacing: 3px;
+}
+
+.section-loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include divideChildren();
+}

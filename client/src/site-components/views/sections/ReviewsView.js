@@ -16,8 +16,7 @@ export const ReviewsView = ({apiError, contestReviews, projectReviews, ...props}
 
     const renderReview = (review, i) => {
         return (
-            <a style={{backgroundImage: `url(/images/4.jpg)`}}
-               className="review"
+            <a className="review"
                href={review.url}
                target="_blank"
                rel="noopener noreferrer"

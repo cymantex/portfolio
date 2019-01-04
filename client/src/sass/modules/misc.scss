@@ -1,0 +1,19 @@
+.typewriter-animation {
+    span,
+    &.span {
+        display: inline-block;
+    }
+}
+
+#google-map {
+    border: none;
+    max-width: 100%;
+    width: 100%;
+    height: $googleMapHeight;
+}
+
+@media (max-width: $mediaMedium) {
+    #google-map {
+        height: 300px;
+    }
+}

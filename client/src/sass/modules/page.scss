@@ -1,0 +1,39 @@
+/*----------------------------------------
+ * Page
+ *----------------------------------------*/
+.page {
+    min-height: 100vh;
+    color: $pageColor;
+    @include rainbowPage();
+
+    &-wrapper {
+        position: relative;
+        margin: 0 auto;
+        padding: 75px $padding4 $padding4 $padding4;
+        max-width: $wrapper1;
+    }
+
+    &-title {
+        font-size: $headingPrimary;
+        margin: $dividerPrimary 0;
+        text-align: center;
+    }
+}
+
+#home-page {
+    display: flex;
+
+    .page-wrapper {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: $mediaSmall) {
+    .page {
+        justify-content: flex-start;
+    }
+}

@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9;
+    z-index: $mainMenuZIndex;
     user-select: none;
 
     a,
@@ -23,13 +23,14 @@
     #main-menu {
         .menu:last-child {
             align-items: flex-start;
-            transition: .4s transform ease-out;
+            transition: transform $effectPrimary;
             transform: translateX(-100%);
             will-change: transform;
         }
 
         &.mobile-menu-open {
-            animation: toDarkPrimaryBackground .4s;
+            animation: fadeToPrimary2;
+            animation-duration: .4s;
             animation-fill-mode: forwards;
 
             .menu:last-child {

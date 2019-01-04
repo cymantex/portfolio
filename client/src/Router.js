@@ -10,7 +10,7 @@ import {Animation} from "./components/styled/Animation";
 
 export const Router = () => (
     <BrowserRouter>
-        <Animation duration={2500}>
+        <Animation duration={500}>
             <Route exact path={routes.contactPage} component={ContactPage}/>
             <Route exact path={routes.homePage} component={HomePage}/>
             <Route exact path={routes.projectsPage} component={ProjectsPage}/>

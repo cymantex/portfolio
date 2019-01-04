@@ -1,10 +1,3 @@
-//----------------------------------------------
-// Effects
-//----------------------------------------------
-@mixin standardHoverEffect(){
-    transition: .2s ease-out;
-}
-
 @mixin divideChildren(){
     > * {
         margin-bottom: $margin3;
@@ -16,25 +9,28 @@
 }
 
 @mixin overlay(){
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
 }
 
 @mixin backgroundLink($background, $overlay, $overlayHover){
     position: relative;
-    background-color: $background;
     background-size: cover;
+    background-color: $background;
     background-position: center center;
     background-blend-mode: hard-light;
     user-select: none;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+    box-shadow: $backgroundLinkShadow;
+    @include overlay();
 
     > * {
-        z-index: 2;
+        z-index: $overlayContainerZIndex;
     }
 
     &:hover {
@@ -46,25 +42,26 @@
     }
 
     &:after {
-        @include overlay();
         background-color: $overlay;
         transition: background 250ms ease-out;
     }
 }
 
-@mixin pulsingRainbowBackground(){
-    animation-name: fadeBackground;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    will-change: background-color;
+@mixin primaryBackgroundLink(){
+    @include backgroundLink($primary, rgba($primary2, 0.6), rgba($primary2, 0.4));
+}
+
+@mixin projectBackgroundLink(){
+    @include backgroundLink($primary, rgba($primary2, 0.5), rgba($primary2, 0.95));
+}
+
+@mixin rainbowPage(){
+    background-color: rgba($secondary, .75);
+    @include overlay();
 
     &:after {
-        background-image: url(/images/4.jpg);
-        @include overlay();
-        z-index: -1;
-        content: '';
+        background-image: url("/images/rainbow.jpg");
         background-size: cover;
+        z-index: $overlayZIndex;
     }
 }

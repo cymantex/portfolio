@@ -1,0 +1,27 @@
+.input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: $h5;
+    border-radius: 2px;
+    line-height: 1.5;
+    border: none;
+    color: $inputColor;
+    background-color: $inputBg;
+    background-clip: padding-box;
+    box-shadow: none;
+
+    &.disabled {
+        background-color: $disabled;
+    }
+
+    &.error {
+        background-color: $inputError;
+        color: $inputColor;
+    }
+
+    &::placeholder {
+        font-size: $h5;
+        color: $placeholder;
+    }
+}

@@ -1,7 +1,9 @@
 import React from "react";
 
 export const Page = ({children, ...props}) => (
-    <section className="page wrapper-1" {...props}>
-        {children}
+    <section className="page" {...props}>
+        <div className="page-wrapper">
+            {children}
+        </div>
     </section>
 );

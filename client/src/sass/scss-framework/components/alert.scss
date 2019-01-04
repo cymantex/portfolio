@@ -27,17 +27,16 @@ body.alert-rendered {
     }
 
     .alert-main {
-        transform: scale(0.5, 0.5);
-        transform-origin: bottom;
+        opacity: 0;
         margin: 0 auto;
         width: 100%;
         max-width: 100%;
         z-index: 1001;
-        transition: transform .2s ease-out;
+        transition: opacity .3s ease-in;
+        will-change: opacity;
 
         &.alert-visible {
-            transform: scale(1, 1);
-            transform-origin: top;
+            opacity: 1;
         }
     }
 

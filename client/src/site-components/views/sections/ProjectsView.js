@@ -8,7 +8,7 @@ export class ProjectsView extends Component {
         AlertOptionPane.showPlainAlert({
             title: projectItem.title,
             htmlMessage: (
-                <div id="project-modal">
+                <div id="project-alert">
                     <div className="project-description">
                         <h5 className="mb-7">About the project</h5>
                         <p>{projectItem.description}</p>
@@ -22,7 +22,7 @@ export class ProjectsView extends Component {
             ),
             confirmText: "Close"
         });
-    }
+    };
 
     renderProject = (projectItem, i) => {
         return (

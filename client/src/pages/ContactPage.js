@@ -11,13 +11,13 @@ export const ContactPage = () => (
         <SocialMenu/>
         <div className="columns breakpoint md">
             <div className="column wrapper-4">
-                <h1 className="display-3">Contact me</h1>
+                <h1 className="section-title">Contact me</h1>
                 <ContactFormController>
                     <ContactForm/>
                 </ContactFormController>
             </div>
             <div className="column wrapper-4">
-                <h2 className="display-3">My location</h2>
+                <h2 className="section-title">My location</h2>
                 <iframe
                     title="map"
                     id="google-map"
