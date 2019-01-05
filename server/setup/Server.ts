@@ -10,6 +10,7 @@ import {constants} from "../utils/constants";
 import glob from "glob";
 import Database from "./Database";
 import {Sequelize} from "sequelize-typescript";
+import compression from "compression";
 
 export interface ServerOptions {
     port: number
@@ -59,6 +60,7 @@ export default class Server {
         this.app.use(bodyParser.urlencoded({extended: true}));
         this.app.use(bodyParser.json());
         this.app.use(helmet());
+        app.use(compression());
         this.app.use(cookieParser());
         this.app.use(cors());
     };
