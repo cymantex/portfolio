@@ -1,5 +1,9 @@
 export const getEnv = (name: string) => {
-    return (process.env[name])
-        ? process.env[name]
-        : require("../secret").default[name];
+    if(process.env[name]) return process.env[name];
+
+    try {
+        return require("../secret").default[name];
+    } catch {
+        return "";
+    }
 };
