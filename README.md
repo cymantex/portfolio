@@ -22,6 +22,7 @@
     - **sass**: Contains custom styling for the application.
     - **components**: Components designed to work in any React application.
     - **site-components**: Components designed specifically for this site.
+        - **hooks**: Contains [react-hooks](https://reactjs.org/docs/hooks-intro.html)
         - **hocs**: Contains [higher-order components](https://reactjs.org/docs/higher-order-components.html).
         - **controllers**: Components which are only focused on the logic and not the presentation.
     	- **views**: Components which are only focused on the presentation and not the logic.

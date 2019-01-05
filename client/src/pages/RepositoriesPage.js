@@ -1,7 +1,7 @@
 import React from "react";
 import {Page} from "../site-components/views/Page";
 import {MainMenu} from "../site-components/views/MainMenu";
-import RepositoryController from "../site-components/controllers/ResositoryController";
+import RepositoryController from "../site-components/controllers/RepositoryController";
 import {RepositoryView} from "../site-components/views/sections/RepositoryView";
 import {SocialMenu} from "../site-components/views/SocialMenu";
 

@@ -6,6 +6,14 @@ describe("Validator.js", () => {
         expect(validator.hasErrors()).toBeTruthy();
     });
 
+    it("Should create one error for each field containing an error", () => {
+        const validator = new Validator([
+            {name: "foo", value: "", required: true},
+            {name: "bar", value: "", required: true}
+        ]).validate();
+        expect(Object.keys(validator.getErrors()).length).toBe(2);
+    });
+
     it("Should not add error when optional field is empty", () => {
         const validator = new Validator([{name: "foo", value: ""}]).validate();
         expect(validator.hasErrors()).toBeFalsy();

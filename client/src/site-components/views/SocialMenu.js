@@ -1,9 +1,9 @@
 import React from "react";
 import {FreelancerIcon} from "./FreelancerIcon";
 
-export const SocialMenu = () => {
+export const SocialMenu = (props) => {
     return (
-        <nav className="social-menu">
+        <nav className="social-menu" {...props}>
             <a target="_blank"
                title="My freelancer profile"
                className="svg-link"

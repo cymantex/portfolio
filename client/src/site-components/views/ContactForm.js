@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import Form from "../../components/styled/Form";
 import {Button} from "../../components/styled/Button";
 import RecaptchaWidget from "../../components/RecaptchaWidget";
-import {useInputs, focusOnEnter, addInputClass} from "../hooks/useInputs";
+import {useInputs, focusOnEnter, addInputClass} from "../../components/hooks/useInputs";
 import {ValidationMessage} from "./Messages";
 import {validationActions} from "../../utils/constants/validationActions";
 

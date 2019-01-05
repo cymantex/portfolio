@@ -13,7 +13,7 @@ export default class Validator {
 
     checkRequired(){
         this.fields
-            .filter(field => !field.hasError)
+            .filter(field => !this.errors[field.name])
             .filter(field => field.required)
             .filter(field => !field.value)
             .forEach(field => {
@@ -31,7 +31,7 @@ export default class Validator {
         const looksLikeEmail = /\S+@\S+\.\S+/g;
 
         this.fields
-            .filter(field => !field.hasError)
+            .filter(field => !this.errors[field.name])
             .filter(field => field.isEmail)
             .filter(field => !looksLikeEmail.test(field.value))
             .forEach(field => {
@@ -47,6 +47,7 @@ export default class Validator {
 
     checkMaxLength(){
         this.fields
+            .filter(field => !this.errors[field.name])
             .filter(field => field.maxLength)
             .filter(field => field.value.length > field.maxLength)
             .forEach(field => {

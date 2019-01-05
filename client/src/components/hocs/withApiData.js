@@ -37,6 +37,7 @@ export default (options) => (WrappedComponent) => {
                     this.setState(data);
                 }
             } catch(err){
+                console.error(err);
                 console.table(err);
                 if(this.mounted){
                     this.setState({apiError: true});

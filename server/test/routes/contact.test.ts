@@ -4,11 +4,6 @@ import {routes} from "../../utils/constants/routes";
 import request, {Response} from "supertest";
 import {httpCodes} from "../../utils/constants/httpCodes";
 
-const checkSuccess = (response: Response) => {
-    console.log(response.text);
-    expect(response.status).to.be.equal(httpCodes.SUCCESS);
-};
-
 const checkBadRequest = (response: Response) => {
     console.error(response.text);
     expect(response.status).to.be.equal(httpCodes.BAD_REQUEST);
