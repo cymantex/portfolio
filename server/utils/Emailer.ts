@@ -6,19 +6,29 @@ import {Options} from "nodemailer/lib/smtp-transport";
 
 export default class Emailer {
     req: Request;
-    smtpTransport: Mail;
+    transport: Mail;
 
     constructor(req: Request){
         this.req = req;
-        this.smtpTransport = nodemailer.createTransport(
-            typeof getEnv("NODEMAILER_TRANSPORT") === "string"
-                ? JSON.parse(getEnv("NODEMAILER_TRANSPORT"))
-                : getEnv("NODEMAILER_TRANSPORT")
-        );
+
+        this.transport = nodemailer.createTransport(Emailer.getTransport());
+    }
+
+    private static getTransport(){
+        const sendgridTransport = require("nodemailer-sendgrid-transport");
+
+        return getEnv("SENDGRID_USERNAME")
+            ? sendgridTransport({
+                auth: {
+                    api_user: getEnv("SENDGRID_USERNAME"),
+                    api_key: getEnv("SENDGRID_PASSWORD")
+                }
+            })
+            : getEnv("NODEMAILER_TRANSPORT")
     }
 
     private async sendMail(mailOptions: Options){
-        return this.smtpTransport.sendMail(mailOptions);
+        return this.transport.sendMail(mailOptions);
     };
 
     async sendContactFormMail(){
