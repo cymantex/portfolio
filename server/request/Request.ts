@@ -1,16 +1,13 @@
 import {Request as Req, Response} from "express";
-import {Sequelize} from "sequelize-typescript";
 import ResponseHandler from "../utils/ResponseHandler";
 
 export default abstract class Request {
     req: Req;
     responseHandler: ResponseHandler;
-    sequelize: Sequelize;
 
-    protected constructor(req: Req, res: Response, sequelize: Sequelize = null) {
+    protected constructor(req: Req, res: Response) {
         this.req = req;
         this.responseHandler = new ResponseHandler(res);
-        this.sequelize = sequelize;
     }
 
     protected parseQuery(): any {
