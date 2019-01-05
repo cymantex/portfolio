@@ -1,6 +1,5 @@
 import Request from "./Request";
 import {Request as Req, Response} from "express";
-import {Sequelize} from "sequelize-typescript";
 import Validator, {ValidationSchema} from "../utils/Validator";
 import {validateGrecaptcha} from "../utils/validateGrecaptcha";
 import Emailer from "../utils/Emailer";
@@ -13,8 +12,8 @@ interface ContactForm {
 }
 
 export default class ContactRequest extends Request {
-    constructor(req: Req, res: Response, sequelize: Sequelize) {
-        super(req, res, sequelize);
+    constructor(req: Req, res: Response) {
+        super(req, res);
     }
 
     async handlePost() {

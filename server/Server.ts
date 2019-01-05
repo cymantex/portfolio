@@ -1,4 +1,4 @@
-import {log} from "../utils/log";
+import {log} from "./utils/log";
 import http from "http";
 import express from "express";
 import bodyParser from "body-parser";
@@ -6,10 +6,8 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import * as path from "path";
-import {constants} from "../utils/constants";
+import {constants} from "./utils/constants";
 import glob from "glob";
-import Database from "./Database";
-import {Sequelize} from "sequelize-typescript";
 import compression from "compression";
 
 export interface ServerOptions {
@@ -20,24 +18,20 @@ export default class Server {
     private readonly app: express.Application;
     private readonly options: ServerOptions;
     private server: http.Server;
-    private readonly database: Database;
 
-    public constructor(options: ServerOptions, database: Database){
+    public constructor(options: ServerOptions){
         this.app = express();
         this.options = options;
-        this.database = database;
     }
 
     public async start(): Promise<http.Server> {
-        const sequelize = await this.database.connect();
         this.addPlugins();
-        this.addRoutes(sequelize);
+        this.addRoutes();
         return this.listen(this.options.port);
     }
 
     public async stop(): Promise<void> {
         if(this.server && this.server.listening){
-            await this.database.close();
             await this.server.close();
         }
     }
@@ -65,12 +59,12 @@ export default class Server {
         this.app.use(cors());
     };
 
-    private addRoutes(sequelize: Sequelize): void {
+    private addRoutes(): void {
         glob.sync(`${constants.serverRoot}/routes/*.${constants.fileType}`)
-            .forEach(routeFile => require(routeFile).default(this.app, sequelize));
+            .forEach(routeFile => require(routeFile).default(this.app));
 
         if(constants.isProduction){
-            const projectRoot = path.resolve(`${__dirname}/../..`);
+            const projectRoot = path.resolve(`${constants.serverRoot}/..`);
             this.app.use(express.static(`${projectRoot}/client/build`));
 
             this.app.get("*", (req, res) => {

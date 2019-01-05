@@ -1,10 +1,8 @@
-import Server from "./setup/Server";
-import {databaseOptions, serverOptions} from "./settings";
-import Database from "./setup/Database";
+import Server from "./Server";
+import {serverOptions} from "./settings";
 import {log} from "./utils/log";
 
-const database = new Database(databaseOptions);
-const server = new Server(serverOptions, database);
+const server = new Server(serverOptions);
 
 server.start().catch(async err => {
     log.error(err);

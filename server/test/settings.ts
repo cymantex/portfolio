@@ -1,4 +1,4 @@
-import {ServerOptions} from "../setup/Server";
+import {ServerOptions} from "../Server";
 import {Sequelize} from "sequelize-typescript";
 import {SequelizeConfig} from "sequelize-typescript/lib/types/SequelizeConfig";
 

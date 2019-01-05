@@ -1,8 +1,6 @@
 import _ from "lodash";
 
 export const parseReview = (key, response) => {
-    console.log(response);
-
     return response.result.reviews.map(review => ({
         description: review.description,
         title: review.review_context.context_name,

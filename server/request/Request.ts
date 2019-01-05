@@ -7,7 +7,7 @@ export default abstract class Request {
     responseHandler: ResponseHandler;
     sequelize: Sequelize;
 
-    protected constructor(req: Req, res: Response, sequelize: Sequelize) {
+    protected constructor(req: Req, res: Response, sequelize: Sequelize = null) {
         this.req = req;
         this.responseHandler = new ResponseHandler(res);
         this.sequelize = sequelize;

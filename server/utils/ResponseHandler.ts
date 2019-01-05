@@ -38,7 +38,7 @@ export default class ResponseHandler {
 
     sendNotFound(err: any) {
         printErrorIfDevelopment(err);
-        this.res.status(NOT_FOUND).send(err.toString());
+        this.res.status(NOT_FOUND).send(ResponseHandler.parseError(err));
     };
 
     sendUnauthorized(err: any) {
@@ -52,13 +52,22 @@ export default class ResponseHandler {
 
     sendSomethingWentWrong(err: any) {
         printErrorIfDevelopment(err);
-        this.res.status(SOMETHING_WENT_WRONG).send(err.toString());
+        this.res.status(SOMETHING_WENT_WRONG).send(ResponseHandler.parseError(err));
     };
 
     sendBadRequest(err: any) {
         printErrorIfDevelopment(err);
-        this.res.status(BAD_REQUEST).send(err.toString());
+        this.res.status(BAD_REQUEST).send(ResponseHandler.parseError(err));
     };
+
+    private static parseError(err: any): any {
+        return (err instanceof Error)
+            ? ({
+                message: err.message,
+                name: err.name
+            })
+            : err;
+    }
 
     handlePromiseResponse(promise: Promise<any>) {
         return promise

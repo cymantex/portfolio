@@ -14,7 +14,7 @@ export const validateGrecaptcha = (req: Request) => {
         .then(response => response.data)
         .then(validation => {
             if(!validation.success){
-                throw new Error("ReCAPTCHA validation failed");
+                throw new Error("reCAPTCHA validation failed");
             }
         });
 };
