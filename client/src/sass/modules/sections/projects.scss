@@ -28,7 +28,7 @@
 
 #project-alert {
     display: grid;
-    grid-template-columns: 1fr $projectAlertSidebarWidth;
+    grid-template-columns: 1fr 0fr;
     grid-template-areas: "gallery description";
 
     .project-description {
@@ -59,21 +59,15 @@
     }
 
     #project-alert {
-        grid-template-columns: 1fr;
-        grid-template-areas: initial;
+        display: block;
 
         .project-description {
-            grid-area: initial;
             margin-left: 0;
             margin-bottom: $dividerPrimary;
             padding-bottom: $dividerPrimary;
             padding-left: 0;
             border-bottom: $borderPrimary;
             border-left: none;
-        }
-
-        .project-gallery {
-            grid-area: initial;
         }
     }
 }

@@ -18,7 +18,7 @@ class RecaptchaWidget extends Component {
 
     componentDidMount(){
         if($("#google-recaptcha-script").length === 0){
-            $("body").append(
+            $("head").append(
                 `<script
                     id="google-recaptcha-script"
                     src="https://www.google.com/recaptcha/api.js"></script>`
@@ -28,11 +28,28 @@ class RecaptchaWidget extends Component {
 
     componentWillUnmount(){
         const $googleRecaptchaScript = $("#google-recaptcha-script");
+        const generatedScript = this.getGeneratedScript();
+        const $wrapper = $(".g-recaptcha-bubble-arrow");
 
         if($googleRecaptchaScript.length > 0) {
             $googleRecaptchaScript.remove();
         }
+
+        if(generatedScript){
+            $(generatedScript).remove();
+        }
+
+        if($wrapper.length > 0){
+            $wrapper.parent().remove();
+        }
     }
+
+    getGeneratedScript = () => {
+        return Array
+            .from($("head").children("script"))
+            .filter(script => script.src)
+            .filter(script => script.src.startsWith("https://www.gstatic.com/recaptcha/"))[0];
+    };
 
     render(){
         const {

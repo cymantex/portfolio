@@ -47,15 +47,15 @@
     "init": "npm install && cd client && npm install",
     "dev": "concurrently \"npm run startClient\" \"npm run startServer\"",
     "start": "cross-env NODE_ENV=production node build/index.js",
-    "build": "tsc && cd client && npm run build",
+    "build": "concurrently \"npm run buildServer\" \"npm run buildClient\"",
     "test": "concurrently \"npm run testServer\" \"npm run testClient\"",
     "startServer": "nodemon",
+    "buildServer": "tsc",
     "testServer": "cross-env NODE_ENV=test ts-mocha server/test/**/*.ts --timeout 10000",
     "startClient": "cd client && npm run start",
+    "buildClient": "cd client && npm run build",
     "testClient": "cd client && npm run test",
     "updateRoutes": "node client/scripts.js updateRoutes",
-    "removeDatabase": "ts-node scripts.ts removeDatabase",
-    "defaultDatabase": "ts-node scripts.ts defaultDatabase",
     "heroku-postbuild": "npm run init && npm run build"
   }
 }

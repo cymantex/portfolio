@@ -9,24 +9,22 @@
 2. `npm run dev` and wait for both the server and client to start.
 
 ### Project Structure:
-- **server**: Contains all backend code. Based on [express](https://expressjs.com/) and [sequelize-typescript](https://www.npmjs.com/package/sequelize-typescript).
-    - **setup:** Files used for the initial server setup.
+- **server**: Contains all backend code. Based on [express](https://expressjs.com/).
     - **routes:** Defines the different API endpoints and what arguments they accept. The exported functions will automatically be fetched an called during the server setup.
     - **request:** Defines what the different API endpoints does.
-    - **models:** Defines all the different database tables.
     - **utils:** Contains other tools not fitting in the other categories.
 - **client**: Contains all frontend code. Based on [create-react-app](https://github.com/facebook/create-react-app).
-    - **pages**: Contains all components which corresponds to a page in the application.
-    - **utils**: All files which are not a React Component.
+    - **pages**: Contains components which corresponds to a page in the application.
+    - **utils**: Contains files which are not a React component.
     - **redux**: Contains all files related to the redux store
     - **sass**: Contains custom styling for the application.
-    - **components**: Components designed to work in any React application.
-    - **site-components**: Components designed specifically for this site.
-        - **hooks**: Contains [react-hooks](https://reactjs.org/docs/hooks-intro.html)
+    - **components**: Contains components designed to work in any React application.
+    - **site-components**: Contains components designed specifically for this site.
+        - **hooks**: Contains [react-hooks](https://reactjs.org/docs/hooks-intro.html).
         - **hocs**: Contains [higher-order components](https://reactjs.org/docs/higher-order-components.html).
-        - **controllers**: Components which are only focused on the logic and not the presentation.
-    	- **views**: Components which are only focused on the presentation and not the logic.
-- **scripts**: All these files are automatically pulled and added as a program argument for [scripts.ts](./scripts.ts). All files under this folder should export an async function.
+        - **controllers**: Contains components which are focused on the logic.
+    	- **views**: Contains components which are focused on the presentation.
+- **scripts**: Contains scripts helpful when developing the application. Each filename will be automatically added as a program argument for the associated scripts.(js|ts) file.
 
 ### Available Scripts
 | Script:                   | Effect:                        |
@@ -34,12 +32,12 @@
 | `npm run init`            | Will install all packages for both the server and the client. |
 | `npm run dev`             | Starts both the server and the client in development mode. |
 | `npm run start`           | Starts the server in production mode and tells it to serve `client/build/index.html` |
-| `npm run build`           | Builds the client for production to the `client/build` folder.<br> The build is minified and the filenames include the hashes.<br> See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information. |
+| `npm run build`           | Builds the client and server for production. |
 | `npm run test`            | Runs all tests in both the server and the client. |
 | `npm run startServer`     | Runs the server in the development mode.<br> The server will restart if you make edits under the server folder.<br> |
+| `npm run buildServer`     | Builds the server for production to the `build` folder. |
 | `npm run testServer`      | Runs all tests under `server/test` |
 | `npm run startClient`     | Runs the client in the development mode.<br> The page will reload if you make edits under the client folder.<br> You will also see any lint errors in the javascript console. |
+| `npm run buildClient`     | Builds the client for production to the `client/build` folder. |
 | `npm run testClient`      | Runs all tests under `client/test` |
 | `npm run updateRoutes`    | Updates [routes.js](client/src/utils/constants/routes.js) and [Router.js](./client/src/Router.js) to link towards every page component under [pages](./client/src/pages). |
-| `npm run removeDatabase`  | Removes the database with the name defined in [settings.json](./server/settings.json). |
-| `npm run defaultDatabase` | First removes any existing database then loads all [defaultData](server/utils/constants/defaultData.ts). |
