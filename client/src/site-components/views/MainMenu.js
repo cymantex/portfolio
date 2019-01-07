@@ -6,7 +6,11 @@ import {routes} from "../../utils/constants/routes";
 export const MainMenu = (props) => (
     <HidingMenu id="main-menu" {...props}>
         <Link to={routes.homePage}>Home</Link>
-        <a href="#cv">CV</a>
+        <a
+            href="https://smnrkssn-cv.herokuapp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >CV</a>
         <Link to={routes.projectsPage}>Projects</Link>
         <Link to={routes.repositoriesPage}>Repositories</Link>
         <Link to={routes.reviewsPage}>Reviews</Link>
