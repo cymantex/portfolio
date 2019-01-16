@@ -9,9 +9,11 @@ export const LanguageIcon = ({language = "", ...props}) => {
         "css": "fab fa-css3-alt"
     };
 
-    if(languageIcons[language.toLowerCase()]){
-        return <i className={languageIcons[language.toLowerCase()]} {...props}/>;
-    } else {
+    if(language === "C#"){
+        return <i className="c-sharp-icon"/>;
+    } else if(!language || !languageIcons[language.toLowerCase()]){
         return <i className="fas fa-file-code" {...props}/>;
     }
+
+    return <i className={languageIcons[language.toLowerCase()]} {...props}/>;
 };

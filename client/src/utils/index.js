@@ -12,7 +12,11 @@ export const bindDispatchToActionCreators = (getActionCreators) => {
 export const getLanguageIcon = (language) => {
     const languageIcons = ["php", "javascript", "typescript", "java", "css"];
 
-    return languageIcons.includes(language.toLowerCase())
+    if(language === "C#"){
+        return "/images/c-sharp-icon.jpg";
+    }
+
+    return language && languageIcons.includes(language.toLowerCase())
         ?  `/images/${language.toLowerCase()}-icon.jpg`
         : "/images/code-icon.jpg";
 };
